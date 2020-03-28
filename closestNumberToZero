@@ -1,0 +1,18 @@
+## Find into an array the number closest to Zero and if you have -5 and 5, return 5.
+## If the array is empty or null return 0.
+
+const closest_num = (nums) => {
+  if(Array.isArray(nums) && nums.length) {
+  const absolute_dists = nums.map(num => Math.abs(num));
+  const min_absolute_dist = Math.min(...absolute_dists);
+
+  if(nums.findIndex( n => n === Math.abs(min_absolute_dist)) !== -1){
+    return Math.abs(min_absolute_dist);
+  }
+    return nums[absolute_dists.indexOf(min_absolute_dist)];
+  }
+
+   return 0;
+}
+var test = closest_num([9, 4, 2, 8, -2]);
+console.log(test);
